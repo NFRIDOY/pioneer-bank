@@ -1,0 +1,80 @@
+.bank-title {
+    /* text-align: center; */
+    margin-bottom: 30px;
+}
+#login-area {
+    margin-top: 150px;
+    width: 100%;
+    height: 100px;
+    /* display: none; */
+    /* padding-top: 100px; */
+    /* background-color: antiquewhite; */
+    /* border: 1px solid rebeccapurple; */
+}
+.submit-area {
+    /* border: 1px solid black; */
+    box-shadow: 5px 5px 10px dimgray;
+    border-radius: 5px;
+    padding: 25px 20px;
+    width: 100%;
+    /* height: 230px; */
+
+}
+.submit-items {
+    width: 100%;
+    margin: 15px 0px;
+}
+#transection-area{
+    display: none;
+    margin-top: 50px;
+}
+.transection-status h1{
+    /* height: 700px; */
+    font-size: 80px;
+    /* color: ; */
+}
+.transection-status div{
+    /* border: 1px solid black; */
+    box-shadow: 5px 5px 5px dimgray;
+    margin: 30px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    /* width: 60px; */
+    height: 200px;
+
+}
+#dipo{
+    /* background-color: green; */
+    background: radial-gradient(circle at -1% 57.5%, rgb(19, 170, 82) 0%, rgb(0, 102, 43) 90%);
+}
+#trans{
+    /* background-color: red; */
+    background: linear-gradient(109.6deg, rgb(255, 207, 84) 11.2%, rgb(255, 158, 27) 91.1%);
+
+} 
+#bal{
+    /* background-color: blue; */
+    /* background: linear-gradient(109.5deg, rgb(13, 11, 136) 9.4%, rgb(86, 255, 248) 78.4%); */
+    background: radial-gradient(circle at 10% 20%, rgb(149, 219, 254) 0%, rgb(7, 134, 197) 90.1%);
+}
+.do-transection{
+    /* border: 1px solid; */
+    margin-top: 60px;
+}
+.do-transection div{
+    /* border: 2px solid black; */
+    box-shadow: 5px 5px 5px dimgray;
+    background-color: rgb(246, 246, 246);
+    border-radius: 20px;
+    padding: 50px;
+    margin: 10px;
+}
+.do-tras-btn{
+    margin: 15px 0px;
+}
+input{
+    width: 100%;
+}

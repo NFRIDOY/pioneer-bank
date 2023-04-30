@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Pioneer Bank</title>
+</head>
+
+<body>
+    <section>
+        <div id="login-area" class="log container">
+            <h1 class="bank-title text-center">Welcome to Pioneer Bank</h1>
+            <div class="submit-area ">
+                <h2>Login</h2>
+
+                <input type="email" placeholder="Email" class="submit-items">
+                <br>
+                <input type="password" placeholder="Password" class="submit-items">
+                <br>
+                <button id="login" type="submit" class="btn btn-success">Enter</button>
+            </div>
+        </div>
+        <div id="transection-area" class="log container">
+            <h1 class="bank-title text-center">Transection</h1>
+            <div class="transection-status row">
+                <div id="dipo" class="col">
+                    <h2  class="text-center">Diposit</h2>
+                    <h1>$ <span id="add-diposit">00</span> </h1>
+                </div >
+                <div id="trans"  class="col">
+                    <h2 class="text-center">Withdraw</h2>
+                    <h1>$ <span id="add-withdraw">00</span> </h1>
+                </div>
+                <div id="bal" class="col">
+                    <h2  class="text-center">Balance</h2>
+                    <h1>$ <span id="add-balance">00</span> </h1>
+                </div>
+            </div>
+            <div class="do-transection row d-flex justify-content-around">
+                <div class="diposit-area col-5">
+                    <h2>Diposit</h2>
+                    <input id="diposit-amount" type="text" placeholder ="$">
+                    <br>
+                    <button id="diposit-btn" type="submit" class="btn btn-success do-tras-btn">Diposit</button>
+                </div>
+                <div class="withdraw-area col-5">
+                    <h2>Withdraw</h2>
+                    <input id="withdraw-amount" type="text" placeholder ="$">
+                    <br>
+                    <button id="withdraw-btn" type="submit" class="btn btn-success do-tras-btn">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        // login btn event handler
+        const loginBtn = document.getElementById("login");
+        loginBtn.addEventListener("click", function() {
+            const loginArea =  document.getElementById("login-area");
+            loginArea.style.display = "none";
+            const transectionArea = document.getElementById("transection-area");
+            transectionArea.style.display = "block";
+        })
+
+        // Diposit-btn event handler
+        const dipositBtn = document.getElementById("diposit-btn");
+        dipositBtn.addEventListener("click", function() {
+            let dipositAmount = parseFloat(document.getElementById("diposit-amount").value);
+            let currentDiposit = parseFloat(document.getElementById("add-diposit").innerText);
+            currentDiposit = currentDiposit + dipositAmount;
+            // let newAddDiposit = currentDiposit + dipositAmount;
+
+            let currentBalance = parseFloat(document.getElementById("add-balance").innerText);
+            newAddBalance = currentDiposit;
+            // currentDiposit = currentDiposit + newAddDiposit;
+            document.getElementById("add-diposit").innerText = currentDiposit;
+            document.getElementById("add-balance").innerText = newAddBalance;
+
+            // console.log(currentDiposit,dipositAmount);
+        })
+
+        // Withdraw-btn event handler
+        const withdrawBtn = document.getElementById("withdraw-btn");
+        withdrawBtn.addEventListener("click", function() {
+            let withdrawAmount = parseFloat(document.getElementById("withdraw-amount").value);
+            let currentBalance = parseFloat(document.getElementById("add-balance").innerText);
+
+            let currentWithdraw = parseFloat(document.getElementById("add-withdraw").innerText);
+            let newAddBalance = currentBalance - withdrawAmount;
+            currentWithdraw = currentWithdraw + withdrawAmount;
+            // let newAddWithdraw = currentWithdraw - withdrawAmount;
+            // newAddBalance = currentWithdraw;
+            // currentWithdraw = currentWithdraw + newAddWithdraw;
+            document.getElementById("add-withdraw").innerText = currentWithdraw;
+            document.getElementById("add-balance").innerText = newAddBalance;
+            // console.log(currentWithdraw,withdrawAmount);
+
+        })
+
+    </script>
+</body>
+
+</html>
