@@ -79,23 +79,24 @@
             else {
                 return num;
             }
-
+inputAmount
         }
         // document.getElementById("diposit-amount").value=0;
         // console.log(document.getElementById("diposit-amount").value);
         
         
         function amountUpdate(valueId,targetId) {
-            let dipositAmount = parseFloat(document.getElementById(valueId).value);
-            let currentDiposit = parseFloat(document.getElementById(targetId).innerText);
-            currentDiposit = currentDiposit + dipositAmount;
-            document.getElementById(targetId).innerText = currentDiposit;
+            let inputAmount = parseFloat(document.getElementById(valueId).value);
+            let currentAmount = parseFloat(document.getElementById(targetId).innerText);
+            currentAmount = currentAmount + inputAmount;
+            document.getElementById(targetId).innerText = currentAmount;
         }
         function amountWithdraw(valueId,targetId) {
-            let withdrawAmount = parseFloat(document.getElementById(valueId).value);
+            // let withdrawAmount = parseFloat(document.getElementById(valueId).value);
+            let inputAmount = parseFloat(document.getElementById(valueId).value);
             let currentBalance = parseFloat(document.getElementById(targetId).innerText);
 
-            currentBalance = currentBalance - withdrawAmount;
+            currentBalance = currentBalance - inputAmount;
             document.getElementById(targetId).innerText = currentBalance;
         }
         
