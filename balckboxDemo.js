@@ -29,3 +29,18 @@
             // const password = document.getElementsByClassName("login-items").value;
             // console.log("Email: ",email);
             // console.log("Password: ",password);
+
+            
+            //----------------------------
+// let withdrawAmount = parseFloat(document.getElementById("withdraw-amount").value);
+            // let currentBalance = parseFloat(document.getElementById("add-balance").innerText);
+
+            // let currentWithdraw = parseFloat(document.getElementById("add-withdraw").innerText);
+            // let newAddBalance = currentBalance - withdrawAmount;
+            // currentWithdraw = currentWithdraw + withdrawAmount;
+            // // let newAddWithdraw = currentWithdraw - withdrawAmount;
+            // // newAddBalance = currentWithdraw;
+            // // currentWithdraw = currentWithdraw + newAddWithdraw;
+            // document.getElementById("add-withdraw").innerText = currentWithdraw;
+            // document.getElementById("add-balance").innerText = newAddBalance;
+            // // console.log(currentWithdraw,withdrawAmount);

@@ -82,44 +82,42 @@
 
         }
         document.getElementById("diposit-amount").value=0;
-        console.log(document.getElementById("diposit-amount").value);
-        // Diposit-btn event handler
-        const dipositBtn = document.getElementById("diposit-btn");
-        dipositBtn.addEventListener("click", function () {
-            let dipositAmount = parseFloat(document.getElementById("diposit-amount").value);
-            let currentDiposit = parseFloat(document.getElementById("add-diposit").innerText);
+        // console.log(document.getElementById("diposit-amount").value);
+        // let dipositBtn = document.getElementById("diposit-btn");
+        
+        function amountUpdate(valueId,targetId) {
+            let dipositAmount = parseFloat(document.getElementById(valueId).value);
+            let currentDiposit = parseFloat(document.getElementById(targetId).innerText);
             currentDiposit = currentDiposit + dipositAmount;
-            // let newAddDiposit = currentDiposit + dipositAmount;
+            document.getElementById(targetId).innerText = currentDiposit;
+            document.getElementById(valueId).value = "";
+        }
+        function amountWithdraw(valueId,targetId) {
+            let withdrawAmount = parseFloat(document.getElementById(valueId).value);
+            let currentBalance = parseFloat(document.getElementById(targetId).innerText);
 
-            let currentBalance = parseFloat(document.getElementById("add-balance").innerText);
-            newAddBalance = currentDiposit;
-            // currentDiposit = currentDiposit + newAddDiposit;
-            document.getElementById("add-diposit").innerText = currentDiposit;
-            document.getElementById("add-balance").innerText = newAddBalance;
+            currentBalance = currentBalance - withdrawAmount;
+            document.getElementById(targetId).innerText = currentBalance;
+        }
+        
+        // Diposit-btn event handler
+        dipositBtn.addEventListener("click", function () {
+            //HOW TO USE amountUpdate("INPUT", "UPDATE");
+            amountUpdate("diposit-amount","add-diposit");
+            amountUpdate("diposit-amount","add-balance");
 
-            document.getElementById("diposit-amount").value = "";
-
-            console.log(dipositAmount);
-            // console.log(currentDiposit,dipositAmount);
+            // document.getElementById("diposit-amount").value = "";
         })
 
         // Withdraw-btn event handler
         const withdrawBtn = document.getElementById("withdraw-btn");
         withdrawBtn.addEventListener("click", function () {
-            let withdrawAmount = parseFloat(document.getElementById("withdraw-amount").value);
-            let currentBalance = parseFloat(document.getElementById("add-balance").innerText);
-
-            let currentWithdraw = parseFloat(document.getElementById("add-withdraw").innerText);
-            let newAddBalance = currentBalance - withdrawAmount;
-            currentWithdraw = currentWithdraw + withdrawAmount;
-            // let newAddWithdraw = currentWithdraw - withdrawAmount;
-            // newAddBalance = currentWithdraw;
-            // currentWithdraw = currentWithdraw + newAddWithdraw;
-            document.getElementById("add-withdraw").innerText = currentWithdraw;
-            document.getElementById("add-balance").innerText = newAddBalance;
-            // console.log(currentWithdraw,withdrawAmount);
-
+            amountUpdate("withdraw-amount","add-withdraw");
+            amountWithdraw("withdraw-amount", "add-balance");
             document.getElementById("withdraw-amount").value = "";
+
+            
+
 
         })
 
