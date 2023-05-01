@@ -81,7 +81,8 @@
             }
 
         }
-
+        document.getElementById("diposit-amount").value=0;
+        console.log(document.getElementById("diposit-amount").value);
         // Diposit-btn event handler
         const dipositBtn = document.getElementById("diposit-btn");
         dipositBtn.addEventListener("click", function () {
@@ -98,6 +99,7 @@
 
             document.getElementById("diposit-amount").value = "";
 
+            console.log(dipositAmount);
             // console.log(currentDiposit,dipositAmount);
         })
 
