@@ -81,16 +81,15 @@
             }
 
         }
-        document.getElementById("diposit-amount").value=0;
+        // document.getElementById("diposit-amount").value=0;
         // console.log(document.getElementById("diposit-amount").value);
-        // let dipositBtn = document.getElementById("diposit-btn");
+        
         
         function amountUpdate(valueId,targetId) {
             let dipositAmount = parseFloat(document.getElementById(valueId).value);
             let currentDiposit = parseFloat(document.getElementById(targetId).innerText);
             currentDiposit = currentDiposit + dipositAmount;
             document.getElementById(targetId).innerText = currentDiposit;
-            document.getElementById(valueId).value = "";
         }
         function amountWithdraw(valueId,targetId) {
             let withdrawAmount = parseFloat(document.getElementById(valueId).value);
@@ -101,12 +100,13 @@
         }
         
         // Diposit-btn event handler
+        const dipositBtn = document.getElementById("diposit-btn");
         dipositBtn.addEventListener("click", function () {
             //HOW TO USE amountUpdate("INPUT", "UPDATE");
             amountUpdate("diposit-amount","add-diposit");
             amountUpdate("diposit-amount","add-balance");
 
-            // document.getElementById("diposit-amount").value = "";
+            document.getElementById("diposit-amount").value = "";
         })
 
         // Withdraw-btn event handler
