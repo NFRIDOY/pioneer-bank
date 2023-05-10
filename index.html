@@ -41,7 +41,7 @@
                 </div>
                 <div id="bal" class="col">
                     <h2 class="text-center">Balance</h2>
-                    <h1>$ <span id="add-balance">0</span> </h1>
+                    <h1>$ <span id="add-balance">1000</span> </h1>
                 </div>
             </div>
             <div class="do-transection row d-flex justify-content-around">
@@ -92,8 +92,17 @@
         // document.getElementById("diposit-amount").value=0;
         // console.log(document.getElementById("diposit-amount").value);
 
-        function isEnoughBalance(Balance,input) {
-            if(Balance >= input) {
+        function isEnoughBalance(Balance, input) {
+            if (Balance >= input) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function isConfirm(Balance, input) {
+            const confirm = confirm("Are you sure?");
+            if (confirm) {
                 return true;
             }
             else {
@@ -132,7 +141,12 @@
         withdrawBtn.addEventListener("click", function () {
             let Balance = parseFloat(document.getElementById("add-balance").innerText);
             let input = parseFloat(document.getElementById("withdraw-amount").value);
-            if (isEnoughBalance(Balance,input)) {
+            if (isEnoughBalance(Balance, input)) {
+                if (Balance === input) {
+                    // document.body.innerHTML = "Equal";
+                    const con = confirm("Are You Sure? You Want to Withdraw All Amount?");
+                    // isConfirm();
+                }
                 amountUpdate("withdraw-amount", "add-withdraw");
                 amountWithdraw("withdraw-amount", "add-balance");
             }
