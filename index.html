@@ -33,15 +33,15 @@
             <div class="transection-status row">
                 <div id="dipo" class="col">
                     <h2 class="text-center">Diposit</h2>
-                    <h1>$ <span id="add-diposit">00</span> </h1>
+                    <h1>$ <span id="add-diposit">0</span> </h1>
                 </div>
                 <div id="trans" class="col">
                     <h2 class="text-center">Withdraw</h2>
-                    <h1>$ <span id="add-withdraw">00</span> </h1>
+                    <h1>$ <span id="add-withdraw">0</span> </h1>
                 </div>
                 <div id="bal" class="col">
                     <h2 class="text-center">Balance</h2>
-                    <h1>$ <span id="add-balance">00</span> </h1>
+                    <h1>$ <span id="add-balance">0</span> </h1>
                 </div>
             </div>
             <div class="do-transection row d-flex justify-content-around">
@@ -71,50 +71,76 @@
         })
 
 
-        function notNullChecker(num) {
-            if (num === null || num === undefined || num === "") {
-                alert("Please enter a number");
-                // return false;
-            }
-            else {
+        function notNullChecker(num = 0) {
+            if (num > 0) {
                 return num;
             }
-inputAmount
+            else {
+                alert("Plz Enter Digit")
+                return 0;
+            }
+
+            // if (num === null || num === undefined || num === "") {
+            //     alert("Please enter a number");
+            //     // return false;
+            // }
+            // else {
+            //     return num;
+            // }
+            // inputAmount
         }
         // document.getElementById("diposit-amount").value=0;
         // console.log(document.getElementById("diposit-amount").value);
-        
-        
-        function amountUpdate(valueId,targetId) {
+
+        function isEnoughBalance(Balance,input) {
+            if(Balance >= input) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+
+        function amountUpdate(valueId, targetId) {
             let inputAmount = parseFloat(document.getElementById(valueId).value);
+            inputAmount = notNullChecker(inputAmount);
             let currentAmount = parseFloat(document.getElementById(targetId).innerText);
             currentAmount = currentAmount + inputAmount;
             document.getElementById(targetId).innerText = currentAmount;
         }
-        function amountWithdraw(valueId,targetId) {
+        function amountWithdraw(valueId, targetId) {
             let inputAmount = parseFloat(document.getElementById(valueId).value);
             let currentBalance = parseFloat(document.getElementById(targetId).innerText);
-
+            inputAmount = notNullChecker(inputAmount);
             currentBalance = currentBalance - inputAmount;
             document.getElementById(targetId).innerText = currentBalance;
         }
-        
+
         // Diposit-btn event handler
         const dipositBtn = document.getElementById("diposit-btn");
         dipositBtn.addEventListener("click", function () {
             //HOW TO USE amountUpdate("INPUT", "UPDATE");
-            amountUpdate("diposit-amount","add-diposit");
-            amountUpdate("diposit-amount","add-balance");
+            amountUpdate("diposit-amount", "add-diposit");
+            amountUpdate("diposit-amount", "add-balance");
 
-            document.getElementById("diposit-amount").value = "";
+            document.getElementById("diposit-amount").value = ""; // Clearing the input Section
         })
 
         // Withdraw-btn event handler
         const withdrawBtn = document.getElementById("withdraw-btn");
         withdrawBtn.addEventListener("click", function () {
-            amountUpdate("withdraw-amount","add-withdraw");
-            amountWithdraw("withdraw-amount", "add-balance");
-            document.getElementById("withdraw-amount").value = "";
+            let Balance = parseFloat(document.getElementById("add-balance").innerText);
+            let input = parseFloat(document.getElementById("withdraw-amount").value);
+            if (isEnoughBalance(Balance,input)) {
+                amountUpdate("withdraw-amount", "add-withdraw");
+                amountWithdraw("withdraw-amount", "add-balance");
+            }
+            else {
+                alert("You Don Have Enough Balance");
+            }
+
+            document.getElementById("withdraw-amount").value = ""; // Clearing the input Section
         })
 
     </script>
