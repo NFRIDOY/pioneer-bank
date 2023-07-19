@@ -26,6 +26,7 @@
                 <input id="user-pass" type="password" placeholder="Password" class="submit-items">
                 <br>
                 <button id="login" type="submit" class="btn btn-success">Enter</button>
+                <button id="signup" type="submit" class="btn btn-warning">Sign Up</button>
             </div>
         </div>
         <div id="transection-area" class="log container">
@@ -59,8 +60,10 @@
                 </div>
             </div>
         </div>
+        <!-- <button disabled="disabled"></button> -->
     </section>
     <script>
+        
         //Blance Init
         var Balance,localBalance;
         // Balance = parseFloat(document.getElementById("add-balance").innerText);
@@ -82,6 +85,18 @@
         // localStorage.setItem("Withdraw", localWithdraw);
         console.log("WithDraw = " + localWithdraw);
 
+        //Init in Sign Up
+        document.getElementById("signup").addEventListener ( "click",function (){
+            localBalance = parseFloat(0);
+            localDiposite = parseFloat(0);
+            localWithdraw = parseFloat(0);
+            localStorage.setItem("Balance", localBalance);
+            localStorage.setItem("Diposite", localDiposite);
+            localStorage.setItem("Withdraw", localWithdraw);
+
+            document.getElementById("signup").disabled = true;
+        })
+
         //Update front-end HTML
         document.getElementById("add-diposit").innerHTML = localDiposite;
         document.getElementById("add-withdraw").innerHTML = localWithdraw;
@@ -94,6 +109,8 @@
             loginArea.style.display = "none";
             const transectionArea = document.getElementById("transection-area");
             transectionArea.style.display = "block";
+
+            document.getElementById("signup").disabled = true;
         })
 
 
