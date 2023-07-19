@@ -41,7 +41,7 @@
                 </div>
                 <div id="bal" class="col">
                     <h2 class="text-center">Balance</h2>
-                    <h1>$ <span id="add-balance">1000</span> </h1>
+                    <h1>$ <span id="add-balance">0</span> </h1>
                 </div>
             </div>
             <div class="do-transection row d-flex justify-content-around">
@@ -61,6 +61,27 @@
         </div>
     </section>
     <script>
+        //Blance Init
+        var Balance,localBalance;
+        // Balance = parseFloat(document.getElementById("add-balance").innerText);
+        localBalance = parseFloat(localStorage.getItem("Balance"));
+        // localStorage.setItem("Balance", localBalance);
+        console.log("Balance = " + localBalance);
+
+        // Diposite init
+        var Diposite,localDiposite;
+        // Diposite = 0;
+        localDiposite = parseFloat(localStorage.getItem("Diposite"));
+        // localStorage.setItem("Diposite", localDiposite);
+        console.log("Diposite = " + localDiposite);
+
+        // Withdraw
+        var withdrawAmount,localWithdraw;
+        // Withdraw = 0;
+        localWithdraw = parseFloat(localStorage.getItem("Withdraw"));
+        // localStorage.setItem("Withdraw", localWithdraw);
+        console.log("WithDraw = " + localWithdraw);
+
         // login btn event handler
         const loginBtn = document.getElementById("login");
         loginBtn.addEventListener("click", function () {
@@ -117,6 +138,9 @@
             let currentAmount = parseFloat(document.getElementById(targetId).innerText);
             currentAmount = currentAmount + inputAmount;
             document.getElementById(targetId).innerText = currentAmount;
+
+            
+            
         }
         function amountWithdraw(valueId, targetId) {
             let inputAmount = parseFloat(document.getElementById(valueId).value);
@@ -126,6 +150,28 @@
             document.getElementById(targetId).innerText = currentBalance;
         }
 
+        // Local Storage Update Func
+        // Diposite Update
+        function localStorageUpdateDeposite(inputAmount, Balance) {
+            localDiposite = parseFloat(localStorage.getItem("Diposite"));
+            localBalance = parseFloat(localStorage.getItem("Balance"));
+
+            localStorage.setItem("Diposite", inputAmount + localDiposite);
+            localStorage.setItem("Balance", inputAmount + localBalance);
+
+        }
+
+        //Withdra Update
+        function localStorageUpdateWithdraw(inputAmount, Balance) {
+            localWithdraw = parseFloat(localStorage.getItem("Withdraw"));
+            localBalance = parseFloat(localStorage.getItem("Balance"));
+            
+            localStorage.setItem("Withdraw", localWithdraw + inputAmount);
+            localStorage.setItem("Balance", localBalance - inputAmount);
+        }
+            
+        
+
         // Diposit-btn event handler
         const dipositBtn = document.getElementById("diposit-btn");
         dipositBtn.addEventListener("click", function () {
@@ -133,13 +179,18 @@
             amountUpdate("diposit-amount", "add-diposit");
             amountUpdate("diposit-amount", "add-balance");
 
+            let inputAmount = parseFloat(document.getElementById("diposit-amount").value);
+            localStorageUpdateDeposite(inputAmount , Balance);
+            
+
+
             document.getElementById("diposit-amount").value = ""; // Clearing the input Section
         })
 
         // Withdraw-btn event handler
         const withdrawBtn = document.getElementById("withdraw-btn");
         withdrawBtn.addEventListener("click", function () {
-            let Balance = parseFloat(document.getElementById("add-balance").innerText);
+            Balance = parseFloat(document.getElementById("add-balance").innerText);
             let input = parseFloat(document.getElementById("withdraw-amount").value);
             if (isEnoughBalance(Balance, input)) {
                 if (Balance === input) {
@@ -149,6 +200,9 @@
                 }
                 amountUpdate("withdraw-amount", "add-withdraw");
                 amountWithdraw("withdraw-amount", "add-balance");
+
+                let inputAmount = parseFloat(document.getElementById("withdraw-amount").value);
+                localStorageUpdateWithdraw(inputAmount , Balance);
             }
             else {
                 alert("You Don Have Enough Balance");
