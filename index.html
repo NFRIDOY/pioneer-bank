@@ -82,6 +82,11 @@
         // localStorage.setItem("Withdraw", localWithdraw);
         console.log("WithDraw = " + localWithdraw);
 
+        //Update front-end HTML
+        document.getElementById("add-diposit").innerHTML = localDiposite;
+        document.getElementById("add-withdraw").innerHTML = localWithdraw;
+        document.getElementById("add-balance").innerHTML = localBalance;
+
         // login btn event handler
         const loginBtn = document.getElementById("login");
         loginBtn.addEventListener("click", function () {
@@ -165,7 +170,7 @@
         function localStorageUpdateWithdraw(inputAmount, Balance) {
             localWithdraw = parseFloat(localStorage.getItem("Withdraw"));
             localBalance = parseFloat(localStorage.getItem("Balance"));
-            
+
             localStorage.setItem("Withdraw", localWithdraw + inputAmount);
             localStorage.setItem("Balance", localBalance - inputAmount);
         }
